@@ -1,6 +1,8 @@
-// import React, { useState } from 'react';
+import React, { useState } from 'react';
+import DeleteModal from './DeleteModal'
 
 const Item = ({ content, id, completed,  deleteTodo, checkToggle }) => {
+
   const handleDelete = () => {
     deleteTodo(id)
   }
@@ -9,12 +11,17 @@ const Item = ({ content, id, completed,  deleteTodo, checkToggle }) => {
   }
 
   return (
-    <li><input type='checkbox' checked={completed} onChange={choice} />
+    <li><input className='checkinput' type='checkbox' checked={completed} onChange={choice} />
     
       <span style={
         {textDecoration: completed ? 'line-through' : 'none'}
       }>{content}</span>
-      <button className='deletebtn' onClick={handleDelete}>×</button>
+      <DeleteModal 
+      buttonLabel='×' 
+      className='deletebtn' 
+      id={id}
+      deleteTodo={deleteTodo}/>
+      {/* <button className='deletebtn' onClick={handleDelete}>×</button> */}
     </li>
   )
 }

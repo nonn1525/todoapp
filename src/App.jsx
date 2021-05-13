@@ -18,6 +18,7 @@ const App = () => {
     ])
   }
   const deleteTodo = id => {
+    
     setTodos(todos.filter(todo => todo.id !== id))
   }
   const checkToggle = id => {
