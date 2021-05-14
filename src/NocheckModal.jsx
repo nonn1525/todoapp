@@ -22,7 +22,7 @@ const NocheckModal = (props, handleDelete) => {
 
   return (
     <div>
-      <Button color="green" onClick={toggle}>{buttonLabel}</Button>
+      <Button color="success" onClick={toggle}>{buttonLabel}</Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>削除確認画面</ModalHeader>
         <ModalBody>
@@ -30,7 +30,7 @@ const NocheckModal = (props, handleDelete) => {
           本当に削除しますか？
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={okClick}>OK</Button>{' '}
+          <Button color="primary" onClick={okClick}>OK</Button>
           <Button color="secondary" onClick={toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>

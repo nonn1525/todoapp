@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import DeleteModal from './DeleteModal'
 import NocheckModal from './NocheckModal'
 
-const Item = ({ content, id, completed,  deleteTodo, checkToggle }) => {
+const Item = ({ content, id, completed, importance, deleteTodo, checkToggle }) => {
 
   const handleDelete = () => {
     deleteTodo(id)
@@ -17,6 +17,7 @@ const Item = ({ content, id, completed,  deleteTodo, checkToggle }) => {
       <span style={
         {textDecoration: completed ? 'line-through' : 'none'}
         }>{content}</span>
+        <span>{importance}</span>
       {completed ? <DeleteModal 
         buttonLabel='×' 
         className='deletebtn' 

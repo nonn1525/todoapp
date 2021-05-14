@@ -10,6 +10,7 @@ const List = ({todos, deleteTodo, checkToggle}) => {
           content={todo.content}
           id={todo.id}
           completed={todo.completed}
+          importance={todo.importance}
           deleteTodo={deleteTodo}
           checkToggle={checkToggle}
           />

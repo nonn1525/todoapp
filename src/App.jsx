@@ -7,20 +7,23 @@ import All from "./All";
 const App = () => {
   const [todos, setTodos] = useState([
   ])
+
   const addTodo = content => {
     setTodos([
       ...todos,
       {
         content: content,
         id: shortid.generate(),
-        completed: false
+        completed: false,
+        importance: '☆☆☆',
       }
     ])
   }
+
   const deleteTodo = id => {
-    
     setTodos(todos.filter(todo => todo.id !== id))
   }
+
   const checkToggle = id => {
     const check = todos.map((todo) => {
       if (todo.id === id) {
@@ -36,6 +39,10 @@ const App = () => {
       }
     })
     setTodos(check)
+  }
+
+  const selectInportance = () => {
+    
   }
 
   return (
