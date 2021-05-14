@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const DeleteModal = (props, handleDelete) => {
+const NocheckModal = (props, handleDelete) => {
   const {
     buttonLabel,
     className
@@ -22,11 +22,12 @@ const DeleteModal = (props, handleDelete) => {
 
   return (
     <div>
-      <Button color="danger" onClick={toggle}>{buttonLabel}</Button>
+      <Button color="green" onClick={toggle}>{buttonLabel}</Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>削除確認画面</ModalHeader>
         <ModalBody>
-          削除しますか？
+          タスクが完了していません。
+          本当に削除しますか？
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={okClick}>OK</Button>{' '}
@@ -37,4 +38,4 @@ const DeleteModal = (props, handleDelete) => {
   );
 }
 
-export default DeleteModal;
+export default NocheckModal;
