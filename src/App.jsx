@@ -8,6 +8,9 @@ const App = () => {
   const [todos, setTodos] = useState([
   ])
 
+  const [dropdownSelect, setDropdownSelect] =
+    useState('☆☆☆')
+
   const addTodo = content => {
     setTodos([
       ...todos,
@@ -15,7 +18,7 @@ const App = () => {
         content: content,
         id: shortid.generate(),
         completed: false,
-        importance: '☆☆☆',
+        importance: dropdownSelect,
       }
     ])
   }
@@ -41,14 +44,10 @@ const App = () => {
     setTodos(check)
   }
 
-  const selectInportance = () => {
-    
-  }
-
   return (
     <div className='App'>
       <h1 className='bg-primary text-white display-4'>ToDoApp</h1>
-      <InputForm addTodo={addTodo} />
+      <InputForm addTodo={addTodo} dropdownSelect={dropdownSelect}setDropdownSelect={setDropdownSelect} />
       <All todos={todos} setTodos={setTodos} />
       <List todos={todos} deleteTodo={deleteTodo} checkToggle={checkToggle}/>
     </div>

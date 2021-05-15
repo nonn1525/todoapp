@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const NocheckModal = (props, handleDelete) => {
+const NocheckModal = (props) => {
   const {
     buttonLabel,
     className

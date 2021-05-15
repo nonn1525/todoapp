@@ -25,10 +25,10 @@ const Item = ({ content, id, completed, importance, deleteTodo, checkToggle }) =
         handleDelete={handleDelete}/>
         :
         <NocheckModal 
-        buttonLabel='×' 
-        className='deletebtn' 
-        id={id}
-        handleDelete={handleDelete}/>}
+          buttonLabel='×' 
+          className='deletebtn' 
+          id={id}
+          handleDelete={handleDelete}/>}
     </li>
   )
 }

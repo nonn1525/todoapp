@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
-const InputForm = ({ addTodo }) => {
+const InputForm = ({ addTodo, dropdownSelect, setDropdownSelect }, ) => {
   const [value, setValue] = useState('')
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const [dropdownSelect, setDropdownSelect] =
-    useState('☆☆☆')
 
   const dropdowntoggle = () => setDropdownOpen(prevState => !prevState);
 
