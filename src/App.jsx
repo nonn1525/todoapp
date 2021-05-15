@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import InputForm from "./InputForm";
 import List from "./List";
 import shortid from 'shortid';
@@ -11,6 +11,8 @@ const App = () => {
   const [dropdownSelect, setDropdownSelect] =
     useState('☆☆☆')
 
+  const [memo, setMemo] = useState('')
+
   const addTodo = content => {
     setTodos([
       ...todos,
@@ -19,6 +21,7 @@ const App = () => {
         id: shortid.generate(),
         completed: false,
         importance: dropdownSelect,
+        memo: memo,
       }
     ])
   }

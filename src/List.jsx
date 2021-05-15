@@ -1,9 +1,10 @@
 import React from 'react';
 import Item from './Item';
+import {ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText} from 'reactstrap';
 
 const List = ({todos, deleteTodo, checkToggle}) => {
   return (
-    <ul style = {{ listStyle: 'none' }}>
+    <ListGroup style = {{ listStyle: 'none' }}>
       {
         todos.map((todo, id) => {
           return <Item 
@@ -16,7 +17,7 @@ const List = ({todos, deleteTodo, checkToggle}) => {
           />
         })
       }
-    </ul>
+    </ListGroup>
   )
 }
 export default List;
