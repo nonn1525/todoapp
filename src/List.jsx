@@ -1,8 +1,9 @@
 import React from 'react';
 import Item from './Item';
-import {ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText} from 'reactstrap';
+import {ListGroup} from 'reactstrap';
 
 const List = ({todos, deleteTodo, checkToggle}) => {
+
   return (
     <ListGroup style = {{ listStyle: 'none' }}>
       {
@@ -11,7 +12,10 @@ const List = ({todos, deleteTodo, checkToggle}) => {
           content={todo.content}
           id={todo.id}
           completed={todo.completed}
+          selectedDate={todo.selectedDate}
+          dropdowncategory={todo.dropdowncategory}
           importance={todo.importance}
+          memo={todo.memo}
           deleteTodo={deleteTodo}
           checkToggle={checkToggle}
           />

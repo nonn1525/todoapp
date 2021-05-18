@@ -4,7 +4,7 @@ import NocheckModal from './NocheckModal'
 import Checkbox from '@material-ui/core/Checkbox';
 import {ListGroupItem, ListGroupItemHeading, ListGroupItemText} from 'reactstrap';
 
-const Item = ({ content, id, completed, importance, deleteTodo, checkToggle }) => {
+const Item = ({ content, id, completed, importance, dropdowncategory, memo, selectedDate, deleteTodo, checkToggle }) => {
 
   const handleDelete = () => {
     deleteTodo(id)
@@ -22,9 +22,11 @@ const Item = ({ content, id, completed, importance, deleteTodo, checkToggle }) =
           Task：{content}
       </ListGroupItemHeading>
       <ListGroupItemText>
-        memo：
+        <p>memo：{memo}</p>
+      {/* <p>時間：{selectedDate}</p> */}
+      <p>カテゴリー：{dropdowncategory}</p>
+      <p>優先度：{importance}</p>
       </ListGroupItemText>
-      <span>優先度：{importance}</span>
     {completed ? <DeleteModal 
       buttonLabel='×' 
       className='deletebtn' 

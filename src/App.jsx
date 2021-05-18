@@ -8,10 +8,22 @@ const App = () => {
   const [todos, setTodos] = useState([
   ])
 
+  const [selectedDate, setSelectedDate] = useState(new Date('2014-08-18T21:11:54'))
+
   const [dropdownSelect, setDropdownSelect] =
     useState('☆☆☆')
 
+  const [dropdowncategory, setDropdownCategory] = useState('モンハン')
+
   const [memo, setMemo] = useState('')
+
+  // const dateStr = () => {
+  //   let hour_str = selectedDate.getHours();
+  //   let minute_str = selectedDate.getMinutes();
+  //   let format_str = 'YYYY-MM-DD hh:mm:ss';
+  //   format_str = format_str.replace(/hh/g, hour_str);
+  //   format_str = format_str.replace(/mm/g, minute_str);
+  // }
 
   const addTodo = content => {
     setTodos([
@@ -20,8 +32,10 @@ const App = () => {
         content: content,
         id: shortid.generate(),
         completed: false,
-        importance: dropdownSelect,
         memo: memo,
+        selectedDate: selectedDate,
+        dropdowncategory: dropdowncategory,
+        importance: dropdownSelect,
       }
     ])
   }
@@ -50,7 +64,7 @@ const App = () => {
   return (
     <div className='App'>
       <h1 className='bg-primary text-white display-4'>ToDoApp</h1>
-      <InputForm addTodo={addTodo} dropdownSelect={dropdownSelect}setDropdownSelect={setDropdownSelect} />
+      <InputForm addTodo={addTodo} dropdownSelect={dropdownSelect}setDropdownSelect={setDropdownSelect} dropdowncategory={dropdowncategory} setDropdownCategory={setDropdownCategory} memo={memo} setMemo={setMemo} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
       <All todos={todos} setTodos={setTodos} />
       <List todos={todos} deleteTodo={deleteTodo} checkToggle={checkToggle}/>
     </div>
