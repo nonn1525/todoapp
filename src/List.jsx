@@ -2,7 +2,7 @@ import React from 'react';
 import Item from './Item';
 import {ListGroup} from 'reactstrap';
 
-const List = ({todos, deleteTodo, checkToggle}) => {
+const List = ({todos, deleteTodo, checkToggle, dropdownSelect, setDropdownSelect, dropdowncategory, setDropdownCategory, memo, setMemo, selectedDate, setSelectedDate, setTodos}) => {
 
   return (
     <ListGroup style = {{ listStyle: 'none' }}>
@@ -17,7 +17,13 @@ const List = ({todos, deleteTodo, checkToggle}) => {
           importance={todo.importance}
           memo={todo.memo}
           deleteTodo={deleteTodo}
-          checkToggle={checkToggle}
+          checkToggle={checkToggle} 
+          dropdownSelect={dropdownSelect}setDropdownSelect={setDropdownSelect} dropdowncategory={dropdowncategory} setDropdownCategory={setDropdownCategory} memo={memo} 
+          setMemo={setMemo} 
+          selectedDate={selectedDate} 
+          setSelectedDate={setSelectedDate} 
+          todos={todos}
+          setTodos={setTodos}
           />
         })
       }

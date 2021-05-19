@@ -9,10 +9,6 @@ const NocheckModal = (props) => {
 
   const [modal, setModal] = useState(false);
 
-  // const handleDelete = () => {
-  //   deleteTodo(id)
-  // }
-
   const toggle = () => setModal(!modal);
 
   const okClick = () => {

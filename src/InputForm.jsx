@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 // import Select from 'react-select'
 import ExpansionPanels from './ExpansionPanels'
 
+
 const InputForm = ({ addTodo, dropdownSelect, setDropdownSelect, dropdowncategory, setDropdownCategory, memo, setMemo, selectedDate, setSelectedDate }) => {
   const [value, setValue] = useState('')
 
@@ -25,7 +26,7 @@ const InputForm = ({ addTodo, dropdownSelect, setDropdownSelect, dropdowncategor
     <React.Fragment>
       <div className='form-group row justify-content-center'>
         <form name='task' className='form-inline excontainer' onSubmit={handleSubmit} >
-          <div>
+          <div className='ip'>
             <input type='text' className='form-control' onChange={e => {
               setValue(e.target.value)}}/>
               <button className='btn btn-primary'>タスクを追加</button>
@@ -42,7 +43,6 @@ const InputForm = ({ addTodo, dropdownSelect, setDropdownSelect, dropdowncategor
               display:flex;
               flex-direction: column;
               margin: 0 auto;
-              
             }
           `}
         </style>

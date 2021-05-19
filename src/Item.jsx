@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import DeleteModal from './DeleteModal'
 import NocheckModal from './NocheckModal'
+import EditModal from './EditModal';
 import Checkbox from '@material-ui/core/Checkbox';
 import {ListGroupItem, ListGroupItemHeading, ListGroupItemText} from 'reactstrap';
 
 
-const Item = ({ content, id, completed, importance, dropdowncategory, memo, selectedDate, deleteTodo, checkToggle }) => {
+const Item = ({ content, id, completed, importance, deleteTodo, checkToggle, dropdownSelect, setDropdownSelect, dropdowncategory, setDropdownCategory, memo, setMemo, selectedDate, setSelectedDate, todos, setTodos }) => {
 
   const handleDelete = () => {
     deleteTodo(id)
@@ -13,6 +14,18 @@ const Item = ({ content, id, completed, importance, dropdowncategory, memo, sele
   const choice = () => {
     checkToggle(id)
   }
+
+  const edithandleSelect = (e) => {
+    setDropdownSelect(e.target.value)
+  }
+
+  const edithandleCategorySelect = (e) => {
+    setDropdownCategory(e.target.value)
+  }
+
+  const edithandleDateChange = (date) => {
+    setSelectedDate(date);
+  };
 
   return (
     <React.Fragment>
@@ -29,6 +42,9 @@ const Item = ({ content, id, completed, importance, dropdowncategory, memo, sele
       <p>カテゴリー：{dropdowncategory}</p>
       <p>優先度：{importance}</p>
       </ListGroupItemText>
+      <EditModal buttonLabel='Edit' edithandleSelect={edithandleSelect} edithandleCategorySelect={edithandleCategorySelect} edithandleDateChange={edithandleDateChange} setDropdownSelect={setDropdownSelect} 
+      todos={todos }
+      setTodos={setTodos}/>
     {completed ? <DeleteModal 
       buttonLabel='×' 
       className='deletebtn' 
@@ -40,6 +56,7 @@ const Item = ({ content, id, completed, importance, dropdowncategory, memo, sele
       className='deletebtn' 
       id={id}
       handleDelete={handleDelete}/>}
+      
     </ListGroupItem>
       <style jsx>
         {`

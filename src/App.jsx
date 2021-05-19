@@ -8,6 +8,8 @@ const App = () => {
   const [todos, setTodos] = useState([
   ])
 
+  const [filtertodo, setFilterTodo] = useState([])
+
   const [selectedDate, setSelectedDate] = useState(new Date('2014-08-18T21:11:54'))
 
   const [dropdownSelect, setDropdownSelect] =
@@ -36,6 +38,10 @@ const App = () => {
     setTodos(todos.filter(todo => todo.id !== id))
   }
 
+  const categoryFilter = dropdowncategory => {
+    setFilterTodo(todos.filter(todo => todo.dropdowncategory === dropdowncategory))
+  }
+
   const checkToggle = id => {
     const check = todos.map((todo) => {
       if (todo.id === id) {
@@ -57,9 +63,23 @@ const App = () => {
     <div className='App'>
       <h1 className='bg-primary text-white display-4'>ToDoApp</h1>
       <div className='exxcontainer'>
-        <InputForm addTodo={addTodo} dropdownSelect={dropdownSelect}setDropdownSelect={setDropdownSelect} dropdowncategory={dropdowncategory} setDropdownCategory={setDropdownCategory} memo={memo} setMemo={setMemo} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
+        <InputForm addTodo={addTodo} 
+        dropdownSelect={dropdownSelect}setDropdownSelect={setDropdownSelect} dropdowncategory={dropdowncategory} setDropdownCategory={setDropdownCategory} 
+        memo={memo} 
+        setMemo={setMemo} 
+        selectedDate={selectedDate} 
+        setSelectedDate={setSelectedDate}/>
         <All todos={todos} setTodos={setTodos} />
-        <List todos={todos} deleteTodo={deleteTodo} checkToggle={checkToggle}/>
+        <List todos={todos} 
+        deleteTodo={deleteTodo} 
+        checkToggle={checkToggle} 
+        dropdownSelect={dropdownSelect}setDropdownSelect={setDropdownSelect} dropdowncategory={dropdowncategory} setDropdownCategory={setDropdownCategory} 
+        memo={memo} 
+        setMemo={setMemo} 
+        selectedDate={selectedDate} 
+        setSelectedDate={setSelectedDate} 
+        todos={todos}
+        setTodos={setTodos}/>
       </div>
     </div>
   );
