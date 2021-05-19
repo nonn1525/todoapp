@@ -4,6 +4,7 @@ import NocheckModal from './NocheckModal'
 import Checkbox from '@material-ui/core/Checkbox';
 import {ListGroupItem, ListGroupItemHeading, ListGroupItemText} from 'reactstrap';
 
+
 const Item = ({ content, id, completed, importance, dropdowncategory, memo, selectedDate, deleteTodo, checkToggle }) => {
 
   const handleDelete = () => {
@@ -14,9 +15,10 @@ const Item = ({ content, id, completed, importance, dropdowncategory, memo, sele
   }
 
   return (
+    <React.Fragment>
     <ListGroupItem>
       <Checkbox color='primary' className='checkinput' type='checkbox' checked={completed} onChange={choice} />
-     <ListGroupItemHeading style={
+     <ListGroupItemHeading className='listhead' style={
        {textDecoration: completed ? 'line-through' : 'none'}
       }>
           Task：{content}
@@ -39,6 +41,18 @@ const Item = ({ content, id, completed, importance, dropdowncategory, memo, sele
       id={id}
       handleDelete={handleDelete}/>}
     </ListGroupItem>
+      <style jsx>
+        {`
+          .listhead {
+            padding-bottom: px;
+          }
+          p {
+            font-size: 15px;
+            margin: 0;
+          }
+        `}
+      </style>
+    </React.Fragment>
   )
 }
 

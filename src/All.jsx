@@ -25,5 +25,5 @@ const All = ({todos, setTodos}) => {
 export default All;
 
 const StyledDiv = styled.div`
-    margin: 10px 20%;
+    margin: 10px 25%;
 `

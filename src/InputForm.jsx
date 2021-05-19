@@ -16,6 +16,7 @@ const InputForm = ({ addTodo, dropdownSelect, setDropdownSelect, dropdowncategor
     }
     if (value) {
       setValue('')
+      setMemo('')
       document.task.reset();
     }
   }
@@ -23,22 +24,25 @@ const InputForm = ({ addTodo, dropdownSelect, setDropdownSelect, dropdowncategor
   return (
     <React.Fragment>
       <div className='form-group row justify-content-center'>
-        <form name='task' className='form-inline' onSubmit={handleSubmit} >
-      
-        <input type='text' className='form-control' onChange={e => {
-          setValue(e.target.value)}}/>
-          <button className='btn btn-primary'>タスクを追加</button>
+        <form name='task' className='form-inline excontainer' onSubmit={handleSubmit} >
+          <div>
+            <input type='text' className='form-control' onChange={e => {
+              setValue(e.target.value)}}/>
+              <button className='btn btn-primary'>タスクを追加</button>
+          </div>
+          <div>
+            <ExpansionPanels dropdownSelect={dropdownSelect} setDropdownSelect={setDropdownSelect} dropdowncategory={dropdowncategory} setDropdownCategory={setDropdownCategory} memo={memo} setMemo={setMemo} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
+          </div>
         </form>
-      </div>
-      <div className='excontainer'>
 
-        <ExpansionPanels dropdownSelect={dropdownSelect} setDropdownSelect={setDropdownSelect} dropdowncategory={dropdowncategory} setDropdownCategory={setDropdownCategory} memo={memo} setMemo={setMemo} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
       </div>
         <style jsx>
           {`
             .excontainer {
-              width: 300px;
+              display:flex;
+              flex-direction: column;
               margin: 0 auto;
+              
             }
           `}
         </style>

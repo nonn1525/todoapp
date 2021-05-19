@@ -15,6 +15,7 @@ import {
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { FormGroup, Label, Input } from 'reactstrap';
 
 const ExpansionPanels = ({dropdownSelect, setDropdownSelect, dropdowncategory, setDropdownCategory, memo, setMemo, selectedDate, setSelectedDate}) => {
@@ -33,9 +34,9 @@ const ExpansionPanels = ({dropdownSelect, setDropdownSelect, dropdowncategory, s
 
   return (
     <React.Fragment>
-      <Accordion defaultExpanded >
+      <Accordion>
         <AccordionSummary
-         
+         expandIcon={<ExpandMoreIcon />}
          aria-controls="panel1c-content"
          id="panel1c-header"
          >
@@ -48,7 +49,7 @@ const ExpansionPanels = ({dropdownSelect, setDropdownSelect, dropdowncategory, s
           <div>
             <Typography>memo</Typography>
             <Typography>
-              <input type='text' className='form-control' onChange={e => {
+              <input type='text' name='details' className='form-control' onChange={e => {
           setMemo(e.target.value)}}/>
             </Typography>
           <div>
@@ -100,19 +101,15 @@ const ExpansionPanels = ({dropdownSelect, setDropdownSelect, dropdowncategory, s
           </div>
         </AccordionDetails>
         <Divider />
-        <AccordionActions>
+        {/* <AccordionActions>
           <Button size="small">Cancel</Button>
           <Button size="small" color="primary">
             Save
           </Button>
-        </AccordionActions>
+        </AccordionActions> */}
       </Accordion>
 
-      <style jsx>
-          {`
-          
-          `}
-      </style>
+      
      </React.Fragment>
   )
 }
