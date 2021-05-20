@@ -18,9 +18,9 @@ const List = ({todos, deleteTodo, checkToggle, dropdownSelect, setDropdownSelect
           memo={todo.memo}
           deleteTodo={deleteTodo}
           checkToggle={checkToggle} 
-          dropdownSelect={dropdownSelect}setDropdownSelect={setDropdownSelect} dropdowncategory={dropdowncategory} setDropdownCategory={setDropdownCategory} memo={memo} 
+          dropdownSelect={todo.dropdownSelect}setDropdownSelect={setDropdownSelect} dropdowncategory={todo.dropdowncategory} setDropdownCategory={setDropdownCategory} memo={todo.memo} 
           setMemo={setMemo} 
-          selectedDate={selectedDate} 
+          selectedDate={todo.selectedDate} 
           setSelectedDate={setSelectedDate} 
           todos={todos}
           setTodos={setTodos}

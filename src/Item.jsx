@@ -15,17 +15,17 @@ const Item = ({ content, id, completed, importance, deleteTodo, checkToggle, dro
     checkToggle(id)
   }
 
-  const edithandleSelect = (e) => {
-    setDropdownSelect(e.target.value)
-  }
+  // const edithandleSelect = (e) => {
+  //   setDropdownSelect(e.target.value)
+  // }
 
-  const edithandleCategorySelect = (e) => {
-    setDropdownCategory(e.target.value)
-  }
+  // const edithandleCategorySelect = (e) => {
+  //   // setDropdownCategory(e.target.value)
+  // }
 
-  const edithandleDateChange = (date) => {
-    setSelectedDate(date);
-  };
+  // const edithandleDateChange = (date) => {
+  //   // setSelectedDate(date);
+  // };
 
   return (
     <React.Fragment>
@@ -42,8 +42,13 @@ const Item = ({ content, id, completed, importance, deleteTodo, checkToggle, dro
       <p>カテゴリー：{dropdowncategory}</p>
       <p>優先度：{importance}</p>
       </ListGroupItemText>
-      <EditModal buttonLabel='Edit' edithandleSelect={edithandleSelect} edithandleCategorySelect={edithandleCategorySelect} edithandleDateChange={edithandleDateChange} setDropdownSelect={setDropdownSelect} 
-      todos={todos }
+      {/* edithandleSelect={edithandleSelect} edithandleCategorySelect={edithandleCategorySelect} edithandleDateChange={edithandleDateChange} */}
+      <EditModal buttonLabel='Edit' 
+      setDropdownSelect={setDropdownSelect} 
+      setDropdownCategory={setDropdownCategory}
+      todos={todos} 
+      setTodos={setTodos}
+      id={id}
       setTodos={setTodos}/>
     {completed ? <DeleteModal 
       buttonLabel='×' 

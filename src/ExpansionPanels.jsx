@@ -20,6 +20,10 @@ import { FormGroup, Label, Input } from 'reactstrap';
 
 const ExpansionPanels = ({dropdownSelect, setDropdownSelect, dropdowncategory, setDropdownCategory, memo, setMemo, selectedDate, setSelectedDate}) => {
 
+  const handleMemo = (e) => {
+    setMemo(e.target.value)
+  }
+
   const handleSelect = (e) => {
     setDropdownSelect(e.target.value)
   }
@@ -48,8 +52,7 @@ const ExpansionPanels = ({dropdownSelect, setDropdownSelect, dropdowncategory, s
           <div>
             <Typography>memo</Typography>
             <Typography>
-              <input type='text' name='memo' className='form-control' onChange={e => {
-              setMemo(e.target.value)}}/>
+              <input type='text' name='memo' className='form-control' onChange={handleMemo}/>
             </Typography>
           <div>
             <Typography>時間</Typography>

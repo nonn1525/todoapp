@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 // {edithandleSelect, edithandleCategorySelect, edithandleDateChange}
 
-const EditModal = (props) => {
+const EditModal = (props, {todos, id, setTodos}) => {
   const {
     buttonLabel,
     className
@@ -25,7 +25,6 @@ const EditModal = (props) => {
   }
   const edithandleCategorySelect = (e) => {
     setEditDropdownCategory(e.target.value)
-    console.log(editdropdowncategory)
   }
 
   // const edithandleDateChange = (date) => {
@@ -34,18 +33,16 @@ const EditModal = (props) => {
 
   const edit = () => {
     setModal(!modal);
-    // props.setTodos([
-    //   ...props.todos,
-    //   {
-    //     content: content,
-    //     id: shortid.generate(),
-    //     completed: false,
-    //     memo: memo,
-    //     selectedDate: selectedDate,
-    //     dropdowncategory: dropdowncategory,
-    //     importance: dropdownSelect,
-    //   }
-    // ])
+    const edititem = props.todos.map((todo, id) => {
+      if(todo.id === props.id) {
+        todo.importance = editdropdownSelect
+        todo.dropdowncategory = editdropdowncategory
+        return todo;
+      } else {
+        return todo;
+      }
+    })
+    props.setTodos(edititem)
   }
 
   return (

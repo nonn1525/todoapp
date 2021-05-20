@@ -43,7 +43,7 @@ const App = () => {
   }
 
   const checkToggle = id => {
-    const check = todos.map((todo) => {
+    const check = todos.map((todo, id) => {
       if (todo.id === id) {
           if (todo.completed === true) {
             todo.completed = false;

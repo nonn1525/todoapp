@@ -17,7 +17,7 @@ const InputForm = ({ addTodo, dropdownSelect, setDropdownSelect, dropdowncategor
     }
     if (value) {
       setValue('')
-      setMemo('')
+      // setMemo('')
       document.task.reset();
     }
   }
