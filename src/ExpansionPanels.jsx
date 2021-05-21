@@ -78,7 +78,7 @@ const ExpansionPanels = ({dropdownSelect, setDropdownSelect, dropdowncategory, s
             <Typography>
               <FormGroup>
                 <Input type="select" name="select" id="exampleSelect" onChange={handleCategorySelect}>
-               
+                  <option value='' >カテゴリーを選択</option>
                   <option value='買い物リスト' >買い物リスト</option>
                   <option value='勉強' >勉強</option>
                   <option value='仕事' >仕事</option>
@@ -93,6 +93,7 @@ const ExpansionPanels = ({dropdownSelect, setDropdownSelect, dropdowncategory, s
             <Typography>
               <FormGroup>
                 <Input type="select" name="select" id="exampleSelect" onChange={handleSelect}>
+                  <option value='☆☆☆' >☆☆☆</option>
                   <option value='☆☆★' >☆☆★</option>
                   <option value='☆★★' >☆★★</option>
                   <option value='★★★' >★★★</option>

@@ -3,6 +3,8 @@ import InputForm from "./InputForm";
 import List from "./List";
 import shortid from 'shortid';
 import All from "./All";
+import { nanoid } from 'nanoid'
+import { firebase } from './firebase.js';
 
 const App = () => {
   const [todos, setTodos] = useState([
@@ -24,7 +26,7 @@ const App = () => {
       ...todos,
       {
         content: content,
-        id: shortid.generate(),
+        id: nanoid(),
         completed: false,
         memo: memo,
         selectedDate: selectedDate,
@@ -32,10 +34,22 @@ const App = () => {
         importance: dropdownSelect,
       }
     ])
+    // firebase.firestore().collection('todos').add({
+      firebase.firestore().collection("todos").doc(nanoid()).set({
+      content: content,
+      id: nanoid(),
+      completed: false,
+      memo: memo,
+      selectedDate: selectedDate,
+      dropdowncategory: dropdowncategory,
+      importance: dropdownSelect,
+    })
   }
 
   const deleteTodo = id => {
     setTodos(todos.filter(todo => todo.id !== id))
+    console.log(id)
+    firebase.firestore().collection('todos').doc('5DJnV4LrC40heGcNyF78').delete();
   }
 
   const categoryFilter = dropdowncategory => {
@@ -60,6 +74,7 @@ const App = () => {
   }
 
   return (
+    <React.Fragment>
     <div className='App'>
       <h1 className='bg-primary text-white display-4'>ToDoApp</h1>
       <div className='exxcontainer'>
@@ -82,6 +97,7 @@ const App = () => {
         setTodos={setTodos}/>
       </div>
     </div>
+    </React.Fragment>
   );
 }
   export default App;
