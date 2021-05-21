@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Item from './Item';
 import {ListGroup} from 'reactstrap';
 
@@ -7,7 +7,8 @@ const List = ({todos, deleteTodo, checkToggle, dropdownSelect, setDropdownSelect
   return (
     <ListGroup style = {{ listStyle: 'none' }}>
       {
-        todos.map((todo, id) => {
+
+        todos.map((todo, index) => {
           return <Item 
           content={todo.content}
           id={todo.id}

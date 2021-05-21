@@ -1,7 +1,6 @@
-import React, { memo, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import InputForm from "./InputForm";
 import List from "./List";
-import shortid from 'shortid';
 import All from "./All";
 import { nanoid } from 'nanoid'
 import { firebase } from './firebase.js';
@@ -21,6 +20,18 @@ const App = () => {
 
   const [memo, setMemo] = useState('')
 
+  const [todosIds, setTodosIds] = useState('')
+
+  useEffect(() => {
+    const dbtodo = firebase.firestore().collection('todos');
+    dbtodo.onSnapshot((snapshot) => {
+      const todosid = snapshot.docs.map((doc) => {
+        return doc.id;
+      })
+      setTodosIds(todosid)
+    })
+    }, [])
+
   const addTodo = content => {
     setTodos([
       ...todos,
@@ -34,8 +45,8 @@ const App = () => {
         importance: dropdownSelect,
       }
     ])
-    // firebase.firestore().collection('todos').add({
-      firebase.firestore().collection("todos").doc(nanoid()).set({
+    firebase.firestore().collection('todos').add({
+      // firebase.firestore().collection("todos").doc(todos.id).set({
       content: content,
       id: nanoid(),
       completed: false,
@@ -48,8 +59,7 @@ const App = () => {
 
   const deleteTodo = id => {
     setTodos(todos.filter(todo => todo.id !== id))
-    console.log(id)
-    firebase.firestore().collection('todos').doc('5DJnV4LrC40heGcNyF78').delete();
+    // firebase.firestore().collection('todos').doc().delete();
   }
 
   const categoryFilter = dropdowncategory => {
@@ -57,7 +67,7 @@ const App = () => {
   }
 
   const checkToggle = id => {
-    const check = todos.map((todo, id) => {
+    const check = todos.map((todo) => {
       if (todo.id === id) {
           if (todo.completed === true) {
             todo.completed = false;
