@@ -20,24 +20,21 @@ const App = () => {
 
   const [memo, setMemo] = useState('')
 
-  const [todosIds, setTodosIds] = useState('')
-
   useEffect(() => {
-    const dbtodo = firebase.firestore().collection('todos');
-    dbtodo.onSnapshot((snapshot) => {
-      const todosid = snapshot.docs.map((doc) => {
-        return doc.id;
-      })
-      setTodosIds(todosid)
-    })
-    }, [])
+    firebase.firestore().collection('todos').onSnapshot((snapshot) => {
+      const newtodos = snapshot.docs.map(doc => doc.data());
+      setTodos(newtodos);
+    });
+  },[])
 
   const addTodo = content => {
+    const idset= nanoid();
+    console.log(idset)
     setTodos([
       ...todos,
       {
         content: content,
-        id: nanoid(),
+        id: idset,
         completed: false,
         memo: memo,
         selectedDate: selectedDate,
@@ -45,10 +42,9 @@ const App = () => {
         importance: dropdownSelect,
       }
     ])
-    firebase.firestore().collection('todos').add({
-      // firebase.firestore().collection("todos").doc(todos.id).set({
+    firebase.firestore().collection('todos').doc(idset).set({
       content: content,
-      id: nanoid(),
+      id: idset,
       completed: false,
       memo: memo,
       selectedDate: selectedDate,
@@ -59,7 +55,7 @@ const App = () => {
 
   const deleteTodo = id => {
     setTodos(todos.filter(todo => todo.id !== id))
-    // firebase.firestore().collection('todos').doc().delete();
+    firebase.firestore().collection('todos').doc(id).delete();
   }
 
   const categoryFilter = dropdowncategory => {
@@ -104,7 +100,7 @@ const App = () => {
         selectedDate={selectedDate} 
         setSelectedDate={setSelectedDate} 
         todos={todos}
-        setTodos={setTodos}/>
+        setTodos={setTodos} />
       </div>
     </div>
     </React.Fragment>

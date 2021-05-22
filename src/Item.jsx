@@ -15,18 +15,6 @@ const Item = ({ content, id, completed, importance, deleteTodo, checkToggle, dro
     checkToggle(id)
   }
 
-  // const edithandleSelect = (e) => {
-  //   setDropdownSelect(e.target.value)
-  // }
-
-  // const edithandleCategorySelect = (e) => {
-  //   // setDropdownCategory(e.target.value)
-  // }
-
-  // const edithandleDateChange = (date) => {
-  //   // setSelectedDate(date);
-  // };
-
   return (
     <React.Fragment>
     <ListGroupItem>
@@ -42,7 +30,6 @@ const Item = ({ content, id, completed, importance, deleteTodo, checkToggle, dro
       <p>カテゴリー：{dropdowncategory}</p>
       <p>優先度：{importance}</p>
       </ListGroupItemText>
-      {/* edithandleSelect={edithandleSelect} edithandleCategorySelect={edithandleCategorySelect} edithandleDateChange={edithandleDateChange} */}
       <EditModal buttonLabel='Edit' 
       setDropdownSelect={setDropdownSelect} 
       setDropdownCategory={setDropdownCategory}

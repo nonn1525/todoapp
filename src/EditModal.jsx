@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-// {edithandleSelect, edithandleCategorySelect, edithandleDateChange}
+import { firebase } from './firebase.js';
 
 const EditModal = (props, {todos, id, setTodos}) => {
   const {
@@ -19,6 +19,9 @@ const EditModal = (props, {todos, id, setTodos}) => {
 
   const edittaskChange = (e) => {
     setEditTask(e.target.value)
+    // firebase.firestore().collection('todos').doc(props.id).set({
+    //     task: e.target.value
+    // })
   }
 
   const editmemoChange = (e) => {
