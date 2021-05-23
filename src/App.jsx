@@ -6,18 +6,12 @@ import { nanoid } from 'nanoid'
 import { firebase } from './firebase.js';
 
 const App = () => {
-  const [todos, setTodos] = useState([
-  ])
-
+  const [todos, setTodos] = useState([])
   const [filtertodo, setFilterTodo] = useState([])
-
   const [selectedDate, setSelectedDate] = useState(new Date('2014-08-18T21:11:54'))
-
   const [dropdownSelect, setDropdownSelect] =
     useState('☆☆☆')
-
   const [dropdowncategory, setDropdownCategory] = useState('モンハン')
-
   const [memo, setMemo] = useState('')
 
   useEffect(() => {

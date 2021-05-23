@@ -9,19 +9,16 @@ const EditModal = (props, {todos, id, setTodos}) => {
   } = props;
 
   const [modal, setModal] = useState(false)
-  const [edittask, setEditTask] = useState('')
+  const [editTask, setEditTask] = useState('')
   const [editdropdownSelect, setEditDropdownSelect] =
   useState('☆☆☆')
-  const [editdropdowncategory, setEditDropdownCategory] = useState('モンハン');
-  const [editmemo, setEditMemo] = useState('')
+  const [editdropdownCategory, setEditDropdownCategory] = useState('モンハン');
+  const [editMemo, setEditMemo] = useState('')
 
   const toggle = () => setModal(!modal)
 
   const edittaskChange = (e) => {
     setEditTask(e.target.value)
-    // firebase.firestore().collection('todos').doc(props.id).set({
-    //     task: e.target.value
-    // })
   }
 
   const editmemoChange = (e) => {
@@ -30,12 +27,19 @@ const EditModal = (props, {todos, id, setTodos}) => {
 
   const edithandleSelect = (e) => {
     setEditDropdownSelect(e.target.value)
-    console.log(editdropdownSelect)
   }
   const edithandleCategorySelect = (e) => {
     setEditDropdownCategory(e.target.value)
   }
 
+  const fbupdate = () => {
+    firebase.firestore().collection('todos').doc(props.id).set({
+      task: editTask,
+      memo: editMemo,
+      dropdowncategory: editdropdownCategory,
+      importance: editdropdownSelect
+    })
+  }
   // const edithandleDateChange = (date) => {
   //   setEditSelectedDate(date);
   // };
@@ -44,16 +48,17 @@ const EditModal = (props, {todos, id, setTodos}) => {
     setModal(!modal);
     const edititem = props.todos.map((todo, id) => {
       if(todo.id === props.id) {
-        todo.content = edittask
-        todo.memo = editmemo
+        todo.content = editTask
+        todo.memo = editMemo
         todo.importance = editdropdownSelect
-        todo.dropdowncategory = editdropdowncategory
+        todo.dropdowncategory = editdropdownCategory
         return todo;
       } else {
         return todo;
       }
     })
     props.setTodos(edititem)
+    fbupdate()
   }
 
   return (
