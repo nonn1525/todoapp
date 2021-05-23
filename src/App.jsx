@@ -52,9 +52,9 @@ const App = () => {
     firebase.firestore().collection('todos').doc(id).delete();
   }
 
-  const categoryFilter = dropdowncategory => {
-    setFilterTodo(todos.filter(todo => todo.dropdowncategory === dropdowncategory))
-  }
+  // const categoryFilter = dropdowncategory => {
+  //   setFilterTodo(todos.filter(todo => todo.dropdowncategory === dropdowncategory))
+  // }
 
   const checkToggle = id => {
     const check = todos.map((todo) => {
