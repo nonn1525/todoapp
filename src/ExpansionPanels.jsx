@@ -52,9 +52,14 @@ const ExpansionPanels = ({dropdownSelect, setDropdownSelect, dropdowncategory, s
           <div>
             <Typography>memo</Typography>
             <Typography>
-              <input type='text' name='memo' className='form-control' onChange={handleMemo}/>
+              <Input 
+                type='text' 
+                name='memo' 
+                className='form-control' 
+                onChange={handleMemo}
+              />
             </Typography>
-          <div>
+          {/* <div>
             <Typography>時間</Typography>
             <Typography>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -72,12 +77,17 @@ const ExpansionPanels = ({dropdownSelect, setDropdownSelect, dropdowncategory, s
               </Grid>
             </MuiPickersUtilsProvider>
           </Typography>
-          </div>
+          </div> */}
           <div>
             <Typography>カテゴリ</Typography>
             <Typography>
               <FormGroup>
-                <Input type="select" name="select" id="exampleSelect" onChange={handleCategorySelect}>
+                <Input 
+                  type="select" 
+                  name="select" 
+                  id="exampleSelect" 
+                  onChange={handleCategorySelect}
+                >
                   <option value='' >カテゴリーを選択</option>
                   <option value='買い物リスト' >買い物リスト</option>
                   <option value='勉強' >勉強</option>
@@ -92,7 +102,12 @@ const ExpansionPanels = ({dropdownSelect, setDropdownSelect, dropdowncategory, s
             <Typography>優先度</Typography>
             <Typography>
               <FormGroup>
-                <Input type="select" name="select" id="exampleSelect" onChange={handleSelect}>
+                <Input 
+                  type="select" 
+                  name="select" 
+                  id="exampleSelect" 
+                  onChange={handleSelect}
+                >
                   <option value='☆☆☆' >☆☆☆</option>
                   <option value='☆☆★' >☆☆★</option>
                   <option value='☆★★' >☆★★</option>
