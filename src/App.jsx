@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import InputForm from "./InputForm";
 import List from "./List";
 import All from "./All";
@@ -13,7 +13,18 @@ const App = () => {
   const [dropdowncategory, setDropdownCategory] = useState('モンハン')
   const [memo, setMemo] = useState('')
 
+  useEffect(() => {
+    const dbTodo = firebase.firestore().collection('todos');
+    dbTodo.onSnapshot((snapshot) => {
+      const ftodos = snapshot.docs.map((doc) => {
+        return doc.data();
+      });
+      setTodos(ftodos);
+    });
+  }, []);
   const addTodo = content => {
+
+
     const idset= nanoid();
     console.log(idset)
     setTodos([

@@ -17,8 +17,8 @@ const All = ({todos, setTodos}) => {
     for(let i in todos) {
       if(todos[i].completed === true){
         firebase.firestore().collection('todos').doc(todos[i].id).delete();
-      } else {
-        return
+      // } else {
+      //   return
       }
     }
   }
